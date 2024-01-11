@@ -81,7 +81,7 @@ To create a conda enviroment as same as ours, use the yaml file provided in the 
 
    `conda env create -n "TelomereHunter_env" -f TelomereHunter_env.yml`
 
-## Install R packages for `RNAseq_quantTERRA_env`
+### Install R packages for `RNAseq_quantTERRA_env`
 
 All the package you need for the RNA-seq analysis (mainly DEseq2) can be install by executing the `install_R_packages_RNAseq_quantTERRA.R`
 
@@ -93,7 +93,7 @@ Then execute the **"install_R_packages_RNAseq_quantTERRA.R"** by Rscript.
 
    `Rscript install_R_packages_RNAseq_quantTERRA.R`
 
-## Install R packages for `TelomereHunter_env`
+### Install R packages for `TelomereHunter_env`
 
 Firstly, activate the conda enviroment:
 
@@ -103,8 +103,11 @@ Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
 
    `Rscript install_R_packages_TelomereHunter.R`
 
-## 4. Use this pipeline
-1. First, you need to download the SRA files by SRAToolKit manually. Do this by the `prefetch` command.
+# Run this pipeline
+
+### 1. Download SRA files from NCBI database
+
+   First, you need to download the SRA files by SRAToolKit manually. Do this by the `prefetch` command.
    
    ```prefetch SRR_ID -o SRR_ID.sra```
    
@@ -114,7 +117,9 @@ Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
    
    ``` fastq-dump --split-files SRR_ID -O /path/to/output/dir/ ```
 
-2. Configure the `c.0_RNAseq_QuantTERRA.cfg` file.
+### 2. Edit the pipeline configure file
+
+   Next, configure the `c.0_RNAseq_QuantTERRA.cfg` file.
 
    Edit the software path and other settings in the `c.0_RNAseq_QuantTERRA.cfg` file.
 
@@ -122,7 +127,11 @@ Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
 
    **All pipeline scripts, `c.0_RNAseq_QuantTERRA.cfg` and `0_Configure_Setting.sh` should be under the same directory.**
 
-3. Sent a single SRA file to execute this pipeline:**
+### 3. Execute pipeline (This will run on computation nodes)
+
+   **_A series of jobs, including all steps in the pipeline, will be sent to computation nodes of NCHC Taiwania3 by Slurm queueing System._**
+   
+   Finally, sent a single SRA file to execute this pipeline by the following commands:**
 
    *Usage:* `sh 0.0_ps_Pipeline_v3.sh SRR_ID`
 

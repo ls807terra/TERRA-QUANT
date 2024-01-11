@@ -111,9 +111,9 @@ Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
    
    ```prefetch SRR_ID -o SRR_ID.sra```
    
-    _**※ This is because NCHC nodes are not allowed for connecting to the Internet.**_
+   _**※ This is because NCHC nodes are not allowed for connecting to the Internet.**_
     
-    _**※ Otherwise, it can be downloaded and exreacted to fastq by simply doing the command:**_
+   _**※ Otherwise, it can be downloaded and exreacted to fastq by simply doing the command:**_
    
    ``` fastq-dump --split-files SRR_ID -O /path/to/output/dir/ ```
 

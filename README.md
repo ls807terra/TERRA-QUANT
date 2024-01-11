@@ -2,6 +2,7 @@
 This repo is a RNA-seq pipeline that can quantify TERRA expression level from different samples (GEO datasets SRA).
 
 ## Download this pipeline
+<https://codeload.github.com/ls807terra/TERRA_RNA-seq_pipeline/zip/refs/heads/main>
 
 ## Setup conda enviroment
 

@@ -89,6 +89,10 @@ To install, first activate the conda enviroment:
 
    `conda activate RNAseq_quantTERRA_env`
 
+Then execute the `install_R_packages_RNAseq_quantTERRA.R` by Rscript.
+
+   `Rscript install_R_packages_RNAseq_quantTERRA.R`
+
 ## Install R packages for `TelomereHunter_env`
 
 Firstly, activate the conda enviroment:

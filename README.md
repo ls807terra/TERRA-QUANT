@@ -18,7 +18,7 @@ The requirements for STAR aligner are according to [STAR Github page](https://gi
 
 ### Software Requirement
 1. SRAToolkit (v2.11.1)
-2. TrimGalore! (v0.6.3)
+2. TrimGalore (v0.6.3)
 3. Cutadapt (v2.3)
 4. fastqc (v0.12.1)
 5. STAR (2.7.9a)
@@ -35,14 +35,29 @@ The requirements for STAR aligner are according to [STAR Github page](https://gi
 
 # Installation Guide 
 
-## Download this pipeline
+## 1. Download this pipeline
 Directly download from this link: [TERRA_RNA-seq_pipeline.zip](https://codeload.github.com/ls807terra/TERRA_RNA-seq_pipeline/zip/refs/heads/main)
 
 or
 
 Download by git clone command: `git clone https://github.com/ls807terra/TERRA_RNA-seq_pipeline.git`
 
-## Setup conda enviroment
+## 2. Install required softwares
+**Please download and install softwares on your system following their instructions.**
+
+| Tool | version | Guide link |
+|-------|:-----:|------:|
+| SRAToolkit   | v2.11.1 | [Github page](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) |
+| TrimGalore   | v0.6.3  | [Github page](https://github.com/FelixKrueger/TrimGalore) |
+| Cutadapt     | v2.3    | [Github page](https://github.com/marcelm/cutadapt) |
+| fastqc       | v0.12.1 | [Download page](https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc)|
+| STAR         | 2.7.9a  | [Github page](https://github.com/alexdobin/STAR) |
+| samtools     | v1.13   | [Github page](https://github.com/samtools/samtools) |
+| deeptools    | v3.3.1  | [Official Website](https://deeptools.readthedocs.io/en/develop/) |
+| htseq-count  | 2.0.3   | [Official Website](https://htseq.readthedocs.io/en/master/install.html) |
+|telomerehunter| -       | [Official Website](https://www.dkfz.de/en/applied-bioinformatics/telomerehunter/telomerehunter.html) |
+
+## 3. Setup conda enviroment
 
 Create a conda enviroment by the yaml file provided in the `install_env/`
 

@@ -20,7 +20,7 @@ The requirements for STAR aligner are according to [STAR Github page](https://gi
 2. TrimGalore! (v0.6.3)
 3. Cutadapt (v2.3)
 4. fastqc (v0.12.1)
-5. STAR (2.7.9)
+5. STAR (2.7.9a)
 6. samtools (v1.13)
 7. deeptools (v3.3.1)
 8. htseq-count (2.0.3)

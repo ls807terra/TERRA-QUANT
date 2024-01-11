@@ -29,7 +29,7 @@ The requirements for STAR aligner are according to [STAR Github page](https://gi
 10. Python version >= 3.8
 11. R version >= 4.2
 
-**Telomerehunter was used in this pipeline to calculate TERRA (or telomeric repeats) content of a RNA-seq dataset.**
+**Telomerehunter is used in this pipeline to calculate TERRA (or telomeric repeats) content of a RNA-seq dataset.**
 
 *Reference paper: [*Feuerbach, L., Sieverling, L., Deeg, K.I. et al. TelomereHunter – in silico estimation of telomere content and composition from cancer genomes. BMC Bioinformatics 20, 272 (2019).*](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2851-0#citeas)
 

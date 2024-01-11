@@ -1,7 +1,8 @@
 # RNA-seq_pipeline_Quant_TERRA
+This repo is a RNA-seq pipeline that can quantify TERRA expression level from different RNA-seq datasets downloaded from GEO database. 
 
 ## Description
-This repo is a RNA-seq pipeline that can quantify TERRA expression level from different samples downloaded from GEO datasets (SRA). This pipeline is a combination of various bioinfomatic tools for performing reads dump, reads QC, alignment, total gene count and TERRA count. This pipeline inputs Sequence Read Archive (SRA) files and generates total gene and TERRA count tables for later expression analysis (For example, plotting heatmaps and boxplots).
+This pipeline is a combination of various bioinfomatic tools for performing reads dump, reads QC, alignment, total gene count and TERRA count. This pipeline inputs Sequence Read Archive (SRA) files and generates total gene and TERRA count tables for later expression analysis (For example, plotting heatmaps and boxplots).
 
 ## System Requirement
 
@@ -38,6 +39,8 @@ Directly download from this link: [TERRA_RNA-seq_pipeline.zip](https://codeload.
 or
 
 Download by git clone command: `git clone https://github.com/ls807terra/TERRA_RNA-seq_pipeline.git`
+
+# Installation Guide 
 
 ## Setup conda enviroment
 

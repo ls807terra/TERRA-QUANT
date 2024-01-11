@@ -2,7 +2,40 @@
 This repo is a RNA-seq pipeline that can quantify TERRA expression level from different samples (GEO datasets SRA).
 
 ## Download this pipeline
-<https://codeload.github.com/ls807terra/TERRA_RNA-seq_pipeline/zip/refs/heads/main>
+Directly download from this link: [TERRA_RNA-seq_pipeline.zip](https://codeload.github.com/ls807terra/TERRA_RNA-seq_pipeline/zip/refs/heads/main)
+
+or
+
+Download by git clone command: `git clone https://github.com/ls807terra/TERRA_RNA-seq_pipeline.git`
+
+## System Requirement
+
+### Hardware Requirement
+The minimum requirements that can perfform STAR aligner should be enough to execute all tools in this pipeline.
+
+The requirements for STAR aligner are according to [STAR Github page](https://github.com/alexdobin/STAR).
+
+1. Operation System: CentOS 7 or other later versions of Linux distrubutions.
+2. CPU: x86-64 compatible processors
+3. RAM: At least 16GB
+4. Hard drive storage space: At lease 1TB
+
+### Software Requirement
+1. SRAToolkit (v2.11.1)
+2. TrimGalore! (v0.6.3)
+3. Cutadapt (v2.3)
+4. fastqc (v0.12.1)
+5. STAR (2.7.9)
+6. samtools (v1.13)
+7. deeptools (v3.3.1)
+8. htseq-count (2.0.3)
+9. telomerehunter ([reference link](https://www.dkfz.de/en/applied-bioinformatics/telomerehunter/telomerehunter.html))
+10. Python version >= 3.8
+11. R version >= 4.2
+
+**Telomerehunter was used in this pipeline to calculate TERRA (or telomeric repeats) content of a RNA-seq dataset.**
+
+*Reference paper: [*Feuerbach, L., Sieverling, L., Deeg, K.I. et al. TelomereHunter – in silico estimation of telomere content and composition from cancer genomes. BMC Bioinformatics 20, 272 (2019).*](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2851-0#citeas)
 
 ## Setup conda enviroment
 
@@ -269,14 +302,3 @@ Then execute the `install_R_packages_TelomereHunter.R` by Rscript.
   **Check the configure file `c.0_RNAseq_QuantTERRA.cfg`.**
 
   **The workdir is usually at "../" .**
-
-## Requirement
-1. SRAToolkit (v2.11.1)
-2. TrimGalore! (v0.6.3)
-3. Cutadapt (v2.3)
-4. fastqc (v0.12.1)
-5. STAR (2.7.9)
-6. samtools (v1.13)
-7. deeptools (v3.3.1)
-8. htseq-count (Python3.8)
-9. telomerehunter (R4.2)

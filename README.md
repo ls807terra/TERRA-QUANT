@@ -33,14 +33,14 @@ The requirements for STAR aligner are according to [STAR Github page](https://gi
 
 *Reference paper: [*Feuerbach, L., Sieverling, L., Deeg, K.I. et al. TelomereHunter – in silico estimation of telomere content and composition from cancer genomes. BMC Bioinformatics 20, 272 (2019).*](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2851-0#citeas)
 
+# Installation Guide 
+
 ## Download this pipeline
 Directly download from this link: [TERRA_RNA-seq_pipeline.zip](https://codeload.github.com/ls807terra/TERRA_RNA-seq_pipeline/zip/refs/heads/main)
 
 or
 
 Download by git clone command: `git clone https://github.com/ls807terra/TERRA_RNA-seq_pipeline.git`
-
-# Installation Guide 
 
 ## Setup conda enviroment
 

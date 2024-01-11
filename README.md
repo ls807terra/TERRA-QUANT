@@ -3,8 +3,6 @@ This repo is a RNA-seq pipeline that can quantify TERRA expression level from di
 
 ## Download this pipeline
 
-<https://github.com/LAXY9887/RNA-seq_pipeline_Quant_TERRA/archive/refs/heads/main.zip>
-
 ## Setup conda enviroment
 
 Create a conda enviroment by the yaml file provided in the `install_env/`

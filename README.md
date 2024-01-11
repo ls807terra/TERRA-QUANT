@@ -5,7 +5,7 @@ This repo is a RNA-seq pipeline that can quantify TERRA expression level from di
 This pipeline is a combination of various bioinfomatic tools for performing reads dump, reads QC, alignment, total gene count and TERRA count. This pipeline inputs Sequence Read Archive (SRA) files and generates total gene and TERRA count tables for later expression analysis (For example, plotting heatmaps and boxplots).
 
 ## ** NOTICE **
-The scripts provided in this pipeline were designed to be executed on computation nodes provided by National Center for High-performance Computing at Taiwan (NCHC Taiwan). *Current version of scripts might not work on personal computer.*
+The scripts provided in this pipeline were designed to be executed on computation nodes provided by National Center for High-performance Computing at Taiwan (NCHC Taiwan) using Slurm Queueing system. *Current version of scripts might not work on personal computer.*
 
 ## System Requirement
 

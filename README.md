@@ -89,7 +89,7 @@ To install, first activate the conda enviroment:
 
    `conda activate RNAseq_quantTERRA_env`
 
-Then execute the `install_R_packages_RNAseq_quantTERRA.R` by Rscript.
+Then execute the **"install_R_packages_RNAseq_quantTERRA.R"** by Rscript.
 
    `Rscript install_R_packages_RNAseq_quantTERRA.R`
 
@@ -99,11 +99,11 @@ Firstly, activate the conda enviroment:
 
    `conda activate TelomereHunter_env`
 
-Then execute the `install_R_packages_TelomereHunter.R` by Rscript.
+Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
 
    `Rscript install_R_packages_TelomereHunter.R`
 
-## Use this pipeline
+## 4. Use this pipeline
 1. First, you need to download the SRA files by SRAToolKit manually. Do this by the `prefetch` command.
    
    ```prefetch SRR_ID -o SRR_ID.sra```
@@ -120,9 +120,15 @@ Then execute the `install_R_packages_TelomereHunter.R` by Rscript.
 
    After editing settings, run `sh 0_Configure_Setting.sh c.0_RNAseq_QuantTERRA.cfg`.
 
-   *All pipeline scripts, `c.0_RNAseq_QuantTERRA.cfg` and `0_Configure_Setting.sh` should be under the same directory.*
+   **All pipeline scripts, `c.0_RNAseq_QuantTERRA.cfg` and `0_Configure_Setting.sh` should be under the same directory.**
 
-   **The format of the configure file is as follow:**
+3. Sent a single SRA file to execute this pipeline:**
+
+   *Usage:* `sh 0.0_ps_Pipeline_v3.sh SRR_ID`
+
+   *Example:* `sh 0.0_ps_Pipeline_v3.sh SRRSRR3304509`
+
+### The format of the configure file is as follow:
 
    ```
    ## Genome
@@ -182,42 +188,38 @@ Then execute the `install_R_packages_TelomereHunter.R` by Rscript.
    # BAM tools for BAM merge
    BAMTOOL:/staging/biology/ls807terra/0_Programs/bamtools/build/bin/bamtools
    ```
-   ### Configure file's Rules: 
+### Configure file's Rules: 
    
-   1. To comment or annotate, please add a "#" at the start of a line.
-   
-   2. Format -> TOOL_ID:/path/to/Software , separated by ":".
-   
-   3. Please update the software path if they were changed.
-   
-   4. To rigister a new tool and its path:
-   
-   -> 4.1 In a pipeline script (file name: *_ps_*.sh), write:
-    	       ''' software="TOOL_ID"
-    	           # To use the software
-    	           ${software} -options [files] ... '''
-   
-   -> 4.2 In this configure file, write:
-    	       ''' TOOL_ID:/path/to/this/tool
-   
-   -> 4.3 Run the script: sh 0_Configure_Setting.sh this_configure_file.cfg
-   	       This will reconginze the "TOOL_ID" in a script and replace it by "/path/to/this/tool"
-   
-   5. Make sure that all pipeline script (file name: *_ps_*.sh) are in the same directory with 0_Configure_Setting.sh and this configure file.
+1. Edit to change the softwares' paths, genome or Slurm settings, following the format of TOOL_NAME:/path/to/Software , separated by ":"
+  
+2. To register a new tool in configure file, Add a new line follow the format.
 
-3. Sent a single SRA file to execute this pipeline:
+3. To add a new tool and its path to pipeline:
 
-  *Usage:* `sh 0.0_ps_Pipeline_v3.sh SRR_ID`
+   3.1 In the script of a new software (file name should follow this format: *_ps_*.sh), write:
+    	   ''' software="TOOL_ID"
+    	      # To use the software
+    	      ${software} -options [files] ... '''
 
-  *Example:* `sh 0.0_ps_Pipeline_v3.sh SRRSRR3304509`
+   3.2 In the configure file, write:
+    	   ''' TOOL_ID:/path/to/this/tool
 
-  ## **Notice!**
+   3.3 Run the script: ```sh 0_Configure_Setting.sh this_configure_file.cfg```
+   	   This will reconginze the "TOOL_ID" in a script and replace it by "/path/to/this/tool"
 
-  **Your SRA file need to be locate at ${workdir}/SRA!**
+4. To comment or annotate, please add a "#" at the start of a line.
+   
+5. Please update the software path if they were changed.
+   
+6. Make sure that all pipeline script (file name: *_ps_*.sh) are in the same directory with 0_Configure_Setting.sh and this configure file.
 
-  **Check the configure file `c.0_RNAseq_QuantTERRA.cfg`.**
+## **Notice!**
 
-  **The workdir is usually at "../" .**
+**Your SRA file need to be locate at ${workdir}/SRA!**
+
+**Check the configure file `c.0_RNAseq_QuantTERRA.cfg`.**
+
+**The workdir is usually at "../" .**
 
 
 # Potential Problems during installation and run time

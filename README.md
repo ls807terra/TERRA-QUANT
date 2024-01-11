@@ -3,13 +3,6 @@
 ## Description
 This repo is a RNA-seq pipeline that can quantify TERRA expression level from different samples downloaded from GEO datasets (SRA). This pipeline is a combination of various bioinfomatic tools for performing reads dump, reads QC, alignment, total gene count and TERRA count. This pipeline inputs Sequence Read Archive (SRA) files and generates total gene and TERRA count tables for later expression analysis (For example, plotting heatmaps and boxplots).
 
-## Download this pipeline
-Directly download from this link: [TERRA_RNA-seq_pipeline.zip](https://codeload.github.com/ls807terra/TERRA_RNA-seq_pipeline/zip/refs/heads/main)
-
-or
-
-Download by git clone command: `git clone https://github.com/ls807terra/TERRA_RNA-seq_pipeline.git`
-
 ## System Requirement
 
 ### Hardware Requirement
@@ -38,6 +31,13 @@ The requirements for STAR aligner are according to [STAR Github page](https://gi
 **Telomerehunter was used in this pipeline to calculate TERRA (or telomeric repeats) content of a RNA-seq dataset.**
 
 *Reference paper: [*Feuerbach, L., Sieverling, L., Deeg, K.I. et al. TelomereHunter – in silico estimation of telomere content and composition from cancer genomes. BMC Bioinformatics 20, 272 (2019).*](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2851-0#citeas)
+
+## Download this pipeline
+Directly download from this link: [TERRA_RNA-seq_pipeline.zip](https://codeload.github.com/ls807terra/TERRA_RNA-seq_pipeline/zip/refs/heads/main)
+
+or
+
+Download by git clone command: `git clone https://github.com/ls807terra/TERRA_RNA-seq_pipeline.git`
 
 ## Setup conda enviroment
 

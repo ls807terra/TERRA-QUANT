@@ -75,7 +75,7 @@ To create a conda enviroment as same as ours, use the yaml file provided in the 
 
 *The enviroment will crash if install telomerehunter with other tools.*
  
-### **_Command line_:**
+**_Command line_:**
 
    `conda env create -n "RNAseq_quantTERRA_env" -f RNAseq_quantTERRA_env.yml`
 

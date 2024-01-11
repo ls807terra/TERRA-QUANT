@@ -4,6 +4,9 @@ This repo is a RNA-seq pipeline that can quantify TERRA expression level from di
 ## Description
 This pipeline is a combination of various bioinfomatic tools for performing reads dump, reads QC, alignment, total gene count and TERRA count. This pipeline inputs Sequence Read Archive (SRA) files and generates total gene and TERRA count tables for later expression analysis (For example, plotting heatmaps and boxplots).
 
+## ** NOTICE **
+The scripts provided in this pipeline were designed to be executed on computation nodes provided by National Center for High-performance Computing at Taiwan (NCHC Taiwan). *Current version of scripts might not work on personal computer.*
+
 ## System Requirement
 
 ### Hardware Requirement
@@ -25,7 +28,7 @@ The requirements for STAR aligner are according to [STAR Github page](https://gi
 6. samtools (v1.13)
 7. deeptools (v3.3.1)
 8. htseq-count (2.0.3)
-9. telomerehunter ([reference link](https://www.dkfz.de/en/applied-bioinformatics/telomerehunter/telomerehunter.html))
+9. telomerehunter
 10. Python version >= 3.8
 11. R version >= 4.2
 
@@ -58,8 +61,9 @@ Download by git clone command: `git clone https://github.com/ls807terra/TERRA_RN
 |telomerehunter| -       | [Official Website](https://www.dkfz.de/en/applied-bioinformatics/telomerehunter/telomerehunter.html) |
 
 ## 3. Setup conda enviroment
+We created different conda enviroments for separating conflict tools.
 
-Create a conda enviroment by the yaml file provided in the `install_env/`
+To create a conda enviroment as same as ours, use the yaml file provided in the `install_env/`
 
 **Two separated enviroment should be created!**
 
@@ -85,64 +89,7 @@ To install, first activate the conda enviroment:
 
    `conda activate RNAseq_quantTERRA_env`
 
-### **Notice! Very important!**
-
-You will have some error when installing the R package `devtools` and `xml2`.
-
-For solving  `xml2`, you simply need to install `libxml2` by conda, which is automaticlly installed by the yaml file.
-
-To handle `devtools` problem, you need to fix the libpng in the conda enviroment `lib/`
-
-### Problem:
-
-   libpng15 not found, when installing devtools and some others.
-   
-   It possible that you have already install libpng, but R can not find it.
-   
-   Because it usually recongizes the libpng15.so, and you probably have another version. 
-
-### Solution:
-
-   Before running install_R_packages_RNAseq_quantTERRA.R
-   
-   1. Make sure that there is libpng installed in your conda enviroment.
-   
-    conda install libpng 
-   
-   2. Find it under /your/path/to/anaconda3/env/your_env/lib/
-   
-    For example. I have these file under my env path 
-    
-    ls ~/anaconda3/env/TEST_env/lib/ | grep png
-    
-    libpng16.a
-    libpng16.so
-    libpng16.so.16
-    libpng16.so.16.39.0
-    libpng.a
-    libpng.so
-   
-    The version of my libpng is 16 not 15, so R can not find it.
-    
-   3. Create a softlink that named "libpng15.so" but were direct to libpng16.so
-   
-    Build a softlink 
-   
-    ln -s libpng16.so.16.39.0 libpng15.so
-    
-   4. Now R should find libpng15 properly.
-
-Make sure the libpng were fixed. Then you can execute `install_R_packages_RNAseq_quantTERRA.R` by Rscript:
-
-   `Rscript install_R_packages_RNAseq_quantTERRA.R`
-
-*This will run a verrrrry long time.*
-
 ## Install R packages for `TelomereHunter_env`
-
-**Once you have install telomerehunter, you will find that it doesn't work. LOL**
-
-This is because that you need to additionally install many R packages.
 
 Firstly, activate the conda enviroment:
 
@@ -151,61 +98,6 @@ Firstly, activate the conda enviroment:
 Then execute the `install_R_packages_TelomereHunter.R` by Rscript.
 
    `Rscript install_R_packages_TelomereHunter.R`
-
-*Strikingly, installing any version of R >= 3.0 will crash this enviroment, you can only install those package under system.*
-
-*If root permission was not avaliable, install it as a user R lib by specifying the install prefix to /home.*
-
-*This will also run a verrrrry long time.*
-
-### How to fix PDF plot bug of telomerehunter?
-
-   PDF plot have error while doing telomerehunter.
-   
-   It is because plenty of R script used in telomerehunter lacks `"library(ggplot2)"`
-   
-   Therefore the error message often seem were `"there is no function ggplot()"` or `"there is no function theme()"`
-
-   To fix this, you need to find the R scritps of telomere hunter and edit them to add `"library(ggplot2)"`.
-
-   R script path: 
-   
-   `/path/to/your/telomereHunter_env/lib/python2.7/site-packages/telomerehunter/`
-   
-   Find those R scripts:
-
-   `find /path/to/your/telomereHunter_env/* -name "*.R"`
-
-   ```
-
-   For example, we have these R scripts:
-
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_gc_content_simple.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/TVR_context_summary_tables.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_tel_content.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_repeat_frequency_intratelomeric.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum_summary_simple.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/summary_log2.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_unmapped_summary.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum_simple.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/singleton_plot.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_unmapped_summary_simple.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/check_R_libraries.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/combine_plots.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum_summary.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/TVR_plot.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/normalize_TVR_counts.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/functions_for_plots.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_gc_content.R
-
-   ```
-
-   Some of them have already load ggplot2 but some have not.
-
-   Add "library(ggplot2)" to every R scripts is recommanded.
-
-   After loading ggplot2, telomerehunter PDF plots can be generated.
 
 ## Use this pipeline
 1. First, you need to download the SRA files by SRAToolKit manually. Do this by the `prefetch` command.
@@ -322,3 +214,120 @@ Then execute the `install_R_packages_TelomereHunter.R` by Rscript.
   **Check the configure file `c.0_RNAseq_QuantTERRA.cfg`.**
 
   **The workdir is usually at "../" .**
+
+
+# Potential Problems during installation and run time
+
+### **Notice! Very important!**
+
+You will have some error when installing the R package `devtools` and `xml2`.
+
+For solving  `xml2`, you simply need to install `libxml2` by conda, which is automaticlly installed by the yaml file.
+
+To handle `devtools` problem, you need to fix the libpng in the conda enviroment `lib/`
+
+### Problem1 libpng15 error:
+
+   libpng15 not found, when installing devtools and some others.
+   
+   It possible that you have already install libpng, but R can not find it.
+   
+   Because it usually recongizes the libpng15.so, and you probably have another version. 
+
+### Solution:
+
+   Before running install_R_packages_RNAseq_quantTERRA.R
+   
+   1. Make sure that there is libpng installed in your conda enviroment.
+   
+    conda install libpng 
+   
+   2. Find it under /your/path/to/anaconda3/env/your_env/lib/
+   
+    For example. I have these file under my env path 
+    
+    ls ~/anaconda3/env/TEST_env/lib/ | grep png
+    
+    libpng16.a
+    libpng16.so
+    libpng16.so.16
+    libpng16.so.16.39.0
+    libpng.a
+    libpng.so
+   
+    The version of my libpng is 16 not 15, so R can not find it.
+    
+   3. Create a softlink that named "libpng15.so" but were direct to libpng16.so
+   
+    Build a softlink 
+   
+    ln -s libpng16.so.16.39.0 libpng15.so
+    
+   4. Now R should find libpng15 properly.
+
+Make sure the libpng were fixed. Then you can execute `install_R_packages_RNAseq_quantTERRA.R` by Rscript:
+
+   `Rscript install_R_packages_RNAseq_quantTERRA.R`
+
+*This will run a verrrrry long time.*
+
+### Problem3 Run time Error of telomerehunter
+
+**Once you have install telomerehunter, you will probably find that it doesn't work.**
+
+This is because that you need to additionally install many R packages.
+
+*Strikingly, installing any version of R >= 3.0 will crash this enviroment, you can only install those package under system.*
+
+*If root permission was not avaliable, install it as a user R lib by specifying the install prefix to /home.*
+
+*This will also run a verrrrry long time.*
+
+### Problem4 Plot PDF bugs of telomerehunter
+
+   PDF plot have error while doing telomerehunter.
+   
+   It is because plenty of R script used in telomerehunter lacks `"library(ggplot2)"`
+   
+   Therefore the error message often seem were `"there is no function ggplot()"` or `"there is no function theme()"`
+
+   To fix this, you need to find the R scritps of telomere hunter and edit them to add `"library(ggplot2)"`.
+
+   R script path: 
+   
+   `/path/to/your/telomereHunter_env/lib/python2.7/site-packages/telomerehunter/`
+   
+   Find those R scripts:
+
+   `find /path/to/your/telomereHunter_env/* -name "*.R"`
+
+   ```
+
+   For example, we have these R scripts:
+
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_gc_content_simple.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/TVR_context_summary_tables.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_tel_content.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_repeat_frequency_intratelomeric.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum_summary_simple.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/summary_log2.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_unmapped_summary.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum_simple.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/singleton_plot.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_unmapped_summary_simple.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/check_R_libraries.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/combine_plots.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum_summary.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/TVR_plot.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/normalize_TVR_counts.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/functions_for_plots.R
+   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_gc_content.R
+
+   ```
+
+   Some of them have already load ggplot2 but some have not.
+
+   Add "library(ggplot2)" to every R scripts is recommanded.
+
+   After loading ggplot2, telomerehunter PDF plots can be generated.

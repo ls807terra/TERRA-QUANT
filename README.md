@@ -137,7 +137,7 @@ Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
 
    *Example:* `sh 0.0_ps_Pipeline_v3.sh SRRSRR3304509`
 
-### The format of the configure file is as follow:
+**The format of the configure file is as follow:**
 
    ```
    ## Genome
@@ -197,7 +197,7 @@ Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
    # BAM tools for BAM merge
    BAMTOOL:/staging/biology/ls807terra/0_Programs/bamtools/build/bin/bamtools
    ```
-### Configure file's Rules: 
+### Configure file's Rules
    
 1. Edit to change the softwares' paths, genome or Slurm settings, following the format of TOOL_NAME:/path/to/Software , separated by ":"
   
@@ -222,7 +222,7 @@ Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
    
 6. Make sure that all pipeline script (file name: *_ps_*.sh) are in the same directory with 0_Configure_Setting.sh and this configure file.
 
-## **Notice!**
+**Notice!**
 
 **Your SRA file need to be locate at ${workdir}/SRA!**
 
@@ -249,7 +249,7 @@ To handle `devtools` problem, you need to fix the libpng in the conda enviroment
    
    Because it usually recongizes the libpng15.so, and you probably have another version. 
 
-### Solution:
+**Solution:**
 
    Before running install_R_packages_RNAseq_quantTERRA.R
    
@@ -286,7 +286,7 @@ Make sure the libpng were fixed. Then you can execute `install_R_packages_RNAseq
 
 *This will run a verrrrry long time.*
 
-### Problem3 Run time Error of telomerehunter
+### Problem2 Run time Error of telomerehunter:
 
 **Once you have install telomerehunter, you will probably find that it doesn't work.**
 
@@ -298,7 +298,7 @@ This is because that you need to additionally install many R packages.
 
 *This will also run a verrrrry long time.*
 
-### Problem4 Plot PDF bugs of telomerehunter
+### Problem3 Plot PDF bugs of telomerehunter:
 
    PDF plot have error while doing telomerehunter.
    

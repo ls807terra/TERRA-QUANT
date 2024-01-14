@@ -12,6 +12,11 @@ The scripts provided in this pipeline were designed to be executed on computatio
 2. A modified CHM13 cytobands file will be used in telomerehunter to quantify defined TERRA regions. The file is provided at: TERRA_RNA-seq_pipeline/chm13v2.0_cytobands_allchrs_Add_TERRA_v4.bed
 3. For total human gene counts, we used gene annotation file provided by [CHM13 genome assembly](https://github.com/marbl/CHM13) (Original cytoband file was downloaded from this page as well.)
 
+## Workflow
+
+![TERRA region quantification RNA-seq pipeline](https://github.com/ls807terra/TERRA_RNA-seq_pipeline/assets/153592683/a793af89-ff3d-42a2-bebd-84b5bea83189)
+
+
 ## System Requirement
 
 ### Hardware Requirement
@@ -150,13 +155,30 @@ In the **_Demo_** folder, ```SRA list.txt``` records a series of SRA accession n
 ### Start from downloading SRA files
 First, download these data by SRAToolkit ```prefetch``` command or execute the script provided in this repository 
 
-  **_command:_** ```sh a.0_ps_SRA_download.sh Demo/SRA list.txt fastq_directory```
+  **_command:_** ```sh a.0_ps_SRA_download.sh Demo/SRA list.txt SRA```
 
-This will download all SRA listed in the text file to **_fastq_directory_** folder then downloaded SRA files can be fed into the pipeline. 
+This will download all SRA listed in the text file to **_SRA_** folder then downloaded SRA files can be fed into the pipeline. 
+
+**Please named the folder as ```SRA``` and store SRA file in it to run the pipeline, current version of script does not recognize SRA folder in other name!**
+
+Next, you can execute the pipeline script ```0.0_ps_Pipeline_v4.sh``` to process the SRA file one by one, for example:
+
+  **_command:_** ```sh 0.0_ps_Pipeline_v4.sh SRR7689162```
+
+or execute by a loop:
+
+   **_command:_** 
+   ```
+   while read ln
+    do
+      sh 0.0_ps_Pipeline_v4.sh $ln
+    done < SRA list.txt
+   ```
+## Expect outputs
+
+
 
 ### Start from fastq files
-
-## Expect outputs
 
 ## Normalize conuts
 

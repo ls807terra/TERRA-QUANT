@@ -174,8 +174,14 @@ or execute by a loop:
     done < SRA list.txt
    ```
 ## Expect outputs
+The raw data will process through the steps show in the **_Workflow_** diagram.
 
+Outputs from each step will be store at individule folder:
 
+| folder | file | description |
+|-------|:-----:|------:|
+| fastq    | *.fastq.gz | fastq files extract from a SRA file |
+| trimed_fq| *.fq.gz    | Adaptor and quailty trimmed fastq and QC files |
 
 ### Start from fastq files
 

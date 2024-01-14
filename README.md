@@ -8,9 +8,9 @@ This pipeline is a combination of various bioinfomatic tools for performing read
 The scripts provided in this pipeline were designed to be executed on computation nodes provided by National Center for High-performance Computing at Taiwan (NCHC Taiwan) using Slurm Queueing system. *Current version of scripts might not work on personal computer.*
 
 ## TERRA region bed files
-The TERRA regions were defined based on RNA-seq reads mapping on CHM13 genome.
-[CHM13_TERRA_region_v7.bed]()
-
+1. The TERRA regions were defined based on RNA-seq reads mapping on CHM13 genome. The file is provided at: TERRA_RNA-seq_pipeline/CHM13_TERRA_region_v7.bed
+2. A modified CHM13 cytobands file will be used in telomerehunter to quantify defined TERRA regions. The file is provided at: TERRA_RNA-seq_pipeline/chm13v2.0_cytobands_allchrs_Add_TERRA_v4.bed
+3. For total human gene counts, we used gene annotation file provided by [CHM13 genome assembly](https://github.com/marbl/CHM13) (Original cytoband file was downloaded from this page as well.)
 
 ## System Requirement
 
@@ -143,6 +143,18 @@ Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
    *Example:* `sh 0.0_ps_Pipeline_v3.sh SRRSRR3304509`
 
 # Demo and Data reproduction
+Here is a demonstration of using this pipeline, you can start from downloading SRA files from NCBI database or from processing fastq raw files. 
+
+In the **_Demo_** folder, ```SRA list.txt``` records a series of SRA accession number that were used in the TERRA quantification of Figure3 in our paper. This demo describes steps to reproduce the result.
+
+### Start from downloading SRA files
+First, download these data by SRAToolkit ```prefetch``` command or execute the script provided in this repository 
+
+  **_command:_** ```sh a.0_ps_SRA_download.sh Demo/SRA list.txt fastq_directory```
+
+This will download all SRA listed in the text file to **_fastq_directory_** folder then downloaded SRA files can be fed into the pipeline. 
+
+### Start from fastq files
 
 ## Expect outputs
 

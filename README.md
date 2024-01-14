@@ -14,8 +14,7 @@ The scripts provided in this pipeline were designed to be executed on computatio
 
 ## Workflow
 
-![TERRA region quantification RNA-seq pipeline](https://github.com/ls807terra/TERRA_RNA-seq_pipeline/assets/153592683/a793af89-ff3d-42a2-bebd-84b5bea83189)
-
+![RNA-seq pipeline white](https://github.com/ls807terra/TERRA_RNA-seq_pipeline/assets/153592683/b8e62fbf-e70d-4e6c-b573-6ecf0741be53)
 
 ## System Requirement
 

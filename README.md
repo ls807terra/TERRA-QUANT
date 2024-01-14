@@ -7,6 +7,11 @@ This pipeline is a combination of various bioinfomatic tools for performing read
 ## ** NOTICE **
 The scripts provided in this pipeline were designed to be executed on computation nodes provided by National Center for High-performance Computing at Taiwan (NCHC Taiwan) using Slurm Queueing system. *Current version of scripts might not work on personal computer.*
 
+## TERRA region bed files
+The TERRA regions were defined based on RNA-seq reads mapping on CHM13 genome.
+[CHM13_TERRA_region_v7.bed]()
+
+
 ## System Requirement
 
 ### Hardware Requirement
@@ -136,6 +141,16 @@ Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
    *Usage:* `sh 0.0_ps_Pipeline_v3.sh SRR_ID`
 
    *Example:* `sh 0.0_ps_Pipeline_v3.sh SRRSRR3304509`
+
+# Demo and Data reproduction
+
+## Expect outputs
+
+## Normalize conuts
+
+## Plot heatmaps and boxplots
+
+# Configure file format
 
 **The format of the configure file is as follow:**
 

@@ -1,4 +1,4 @@
-# RNA-seq_pipeline_Quant_TERRA
+# TERRA-QUANT
 This repo is a RNA-seq pipeline that can quantify TERRA expression level from different RNA-seq datasets downloaded from GEO database. 
 
 ## Description

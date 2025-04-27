@@ -14,7 +14,7 @@ The scripts provided in this pipeline were designed to be executed on computatio
 
 ## Workflow
 
-![TERRA_QUANT_pipeline](https://github.com/ls807terra/TERRA-QUANT/blob/main/TERRA_QUANT_pipeline.svg)
+![TERRA_QUANT_pipeline](https://raw.githubusercontent.com/ls807terra/TERRA-QUANT/main/TERRA_QUANT_pipeline.svg)
 
 
 ## System Requirement

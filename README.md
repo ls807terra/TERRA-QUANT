@@ -14,7 +14,8 @@ The scripts provided in this pipeline were designed to be executed on computatio
 
 ## Workflow
 
-![TERRA_QUANT_pipeline.svg]([https://github.com/ls807terra/TERRA_RNA-seq_pipeline/assets/153592683/b8e62fbf-e70d-4e6c-b573-6ecf0741be53](https://github.com/ls807terra/TERRA-QUANT/blob/main/TERRA_QUANT_pipeline.svg))
+![TERRA_QUANT_pipeline](https://github.com/ls807terra/TERRA-QUANT/blob/main/TERRA_QUANT_pipeline.svg)
+
 
 ## System Requirement
 

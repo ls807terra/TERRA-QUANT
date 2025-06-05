@@ -41,9 +41,6 @@ The requirements for STAR aligner are according to [STAR Github page](https://gi
 10. Python version >= 3.8
 11. R version >= 4.2
 
-**Telomerehunter is used in this pipeline to calculate TERRA (or telomeric repeats) content of a RNA-seq dataset.**
-
-*Reference paper: [*Feuerbach, L., Sieverling, L., Deeg, K.I. et al. TelomereHunter – in silico estimation of telomere content and composition from cancer genomes. BMC Bioinformatics 20, 272 (2019).*](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2851-0#citeas)
 
 # Installation Guide 
 
@@ -67,7 +64,6 @@ Download by git clone command: `git clone https://github.com/ls807terra/TERRA_RN
 | samtools     | v1.13   | [Github page](https://github.com/samtools/samtools) |
 | deeptools    | v3.3.1  | [Official Website](https://deeptools.readthedocs.io/en/develop/) |
 | htseq-count  | 2.0.3   | [Official Website](https://htseq.readthedocs.io/en/master/install.html) |
-|telomerehunter| -       | [Official Website](https://www.dkfz.de/en/applied-bioinformatics/telomerehunter/telomerehunter.html) |
 
 ## 3. Setup conda enviroment
 We created different conda enviroments for separating conflict tools.
@@ -339,64 +335,3 @@ Make sure the libpng were fixed. Then you can execute `install_R_packages_RNAseq
    `Rscript install_R_packages_RNAseq_quantTERRA.R`
 
 *This will run a verrrrry long time.*
-
-### Problem2 Run time Error of telomerehunter:
-
-**Once you have install telomerehunter, you will probably find that it doesn't work.**
-
-This is because that you need to additionally install many R packages.
-
-*Strikingly, installing any version of R >= 3.0 will crash this enviroment, you can only install those package under system.*
-
-*If root permission was not avaliable, install it as a user R lib by specifying the install prefix to /home.*
-
-*This will also run a verrrrry long time.*
-
-### Problem3 Plot PDF bugs of telomerehunter:
-
-   PDF plot have error while doing telomerehunter.
-   
-   It is because plenty of R script used in telomerehunter lacks `"library(ggplot2)"`
-   
-   Therefore the error message often seem were `"there is no function ggplot()"` or `"there is no function theme()"`
-
-   To fix this, you need to find the R scritps of telomere hunter and edit them to add `"library(ggplot2)"`.
-
-   R script path: 
-   
-   `/path/to/your/telomereHunter_env/lib/python2.7/site-packages/telomerehunter/`
-   
-   Find those R scripts:
-
-   `find /path/to/your/telomereHunter_env/* -name "*.R"`
-
-   ```
-
-   For example, we have these R scripts:
-
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_gc_content_simple.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/TVR_context_summary_tables.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_tel_content.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_repeat_frequency_intratelomeric.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum_summary_simple.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/summary_log2.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_unmapped_summary.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum_simple.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/singleton_plot.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_unmapped_summary_simple.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/check_R_libraries.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/combine_plots.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum_summary.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/TVR_plot.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/normalize_TVR_counts.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_spectrum.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/functions_for_plots.R
-   telomereHunter/lib/python2.7/site-packages/telomerehunter/plot_gc_content.R
-
-   ```
-
-   Some of them have already load ggplot2 but some have not.
-
-   Add "library(ggplot2)" to every R scripts is recommanded.
-
-   After loading ggplot2, telomerehunter PDF plots can be generated.

@@ -162,12 +162,6 @@ Outputs from each step will be store at individule folder:
 | fastq    | *.fastq.gz | fastq files extract from a SRA file |
 | trimed_fq| *.fq.gz    | Adaptor and quailty trimmed fastq and QC files |
 
-### Start from fastq files
-
-## Normalize conuts
-
-## Plot heatmaps and boxplots
-
 # Configure file format
 
 **The format of the configure file is as follow:**

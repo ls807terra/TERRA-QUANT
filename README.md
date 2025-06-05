@@ -1,4 +1,6 @@
 # TERRA-QUANT
+[![DOI](https://zenodo.org/badge/730564607.svg)](https://doi.org/10.5281/zenodo.15598540)
+
 This repo is a RNA-seq pipeline that can quantify TERRA expression level from different RNA-seq datasets downloaded from GEO database. 
 
 ## Description

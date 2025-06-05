@@ -7,9 +7,10 @@ This pipeline is a combination of various bioinfomatic tools for performing read
 ## ** NOTICE **
 The scripts provided in this pipeline were designed to be executed on computation nodes provided by National Center for High-performance Computing at Taiwan (NCHC Taiwan) using Slurm Queueing system. *Current version of scripts might not work on personal computer.*
 
-## TERRA region bed files
-1. The TERRA regions were defined based on RNA-seq reads mapping on CHM13 genome. The file is provided at: TERRA_RNA-seq_pipeline/CHM13_TERRA_region_v7.bed
-2. A modified CHM13 cytobands file will be used in telomerehunter to quantify defined TERRA regions. The file is provided at: TERRA_RNA-seq_pipeline/chm13v2.0_cytobands_allchrs_Add_TERRA_v4.bed
+## TERRA region and CHM13 gene annotation
+The TERRA regions were defined based on RNA-seq reads mapping on CHM13 genome. Detail information is written in: CHM13_v2.0_add_TERRA_ITS_AS_v5.gtf.gz
+
+
 3. For total human gene counts, we used gene annotation file provided by [CHM13 genome assembly](https://github.com/marbl/CHM13) (Original cytoband file was downloaded from this page as well.)
 
 ## Workflow
@@ -37,7 +38,6 @@ The requirements for STAR aligner are according to [STAR Github page](https://gi
 6. samtools (v1.13)
 7. deeptools (v3.3.1)
 8. htseq-count (2.0.3)
-9. telomerehunter
 10. Python version >= 3.8
 11. R version >= 4.2
 
@@ -73,18 +73,10 @@ To create a conda enviroment as same as ours, use the yaml file provided in the 
 **Two separated enviroment should be created!**
 
    1. `RNAseq_quantTERRA_env` for general RNA-seq analysis.
-
-   2. `TelomereHunter_env` for counting telomeric-repeats read content.
-
-*They are separated because that telomerehunter use python2 and old version of R.*
-
-*The enviroment will crash if install telomerehunter with other tools.*
  
 **_Command line_:**
 
    `conda env create -n "RNAseq_quantTERRA_env" -f RNAseq_quantTERRA_env.yml`
-
-   `conda env create -n "TelomereHunter_env" -f TelomereHunter_env.yml`
 
 ### Install R packages for `RNAseq_quantTERRA_env`
 
@@ -98,15 +90,6 @@ Then execute the **"install_R_packages_RNAseq_quantTERRA.R"** by Rscript.
 
    `Rscript install_R_packages_RNAseq_quantTERRA.R`
 
-### Install R packages for `TelomereHunter_env`
-
-Firstly, activate the conda enviroment:
-
-   `conda activate TelomereHunter_env`
-
-Then execute the **"install_R_packages_TelomereHunter.R"** by Rscript.
-
-   `Rscript install_R_packages_TelomereHunter.R`
 
 # Run this pipeline
 
@@ -201,12 +184,7 @@ Outputs from each step will be store at individule folder:
    ## Pipeline workdir, Please specifiy this!
    WORKDIR:../
    
-   ## TERRA quantification region files.
-   
-   # TERRA regions for TERRA counts.
-   QREGION:/staging/biology/ls807terra/0_bedfiles/hTERRA/CHM13_TERRA_region_v6.bed
-   
-   # Human CHM13 GTF for total gene count.
+   # Human CHM13 GTF and TERRA regions
    QGTF:/staging/biology/ls807terra/0_genomes/genome_gtf/CHM13/CHM13_v2.0.gtf
    
    # CHM13 cytoband file with TERRA regions for telomerehunter.
@@ -240,9 +218,7 @@ Outputs from each step will be store at individule folder:
    
    # HTseq-count
    HTSEQ:/staging/biology/ls807terra/0_Programs/anaconda3/envs/RNAseq_quantTERRA/bin/htseq-count
-   
-   # Telomerehunter for TERRA count
-   THNTER:/staging/biology/ls807terra/0_Programs/anaconda3/envs/telomereHunter/bin/telomerehunter
+
    
    # BAM tools for BAM merge
    BAMTOOL:/staging/biology/ls807terra/0_Programs/bamtools/build/bin/bamtools

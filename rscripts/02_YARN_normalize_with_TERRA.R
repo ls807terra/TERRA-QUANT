@@ -9,7 +9,7 @@ option_list = list(
   make_option(c("-i", "--countFile"), type="character", default=NULL,
               help="Enter a count table file.", metavar="COUNTS"),
   make_option(c("-T", "--TERRAcountFile"), type="character", default=NULL,
-              help="Enter a TERRA count table file.", metavar="TERRA-COUNTS"),
+              help="Enter a TERRA count table file (Telo_repeat and Subtelo from 01_summaryCounts.R).", metavar="TERRA-COUNTS"),
   make_option(c("-a", "--annotation"), type="character", default=NULL,
               help="Enter a sample annotation table,", metavar="ANNOTATION"),
   make_option(c("-O", "--outputDIR"), type="character", default="./",

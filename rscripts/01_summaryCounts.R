@@ -8,7 +8,7 @@ option_list = list(
               help="Enter a directory that contains count files.", metavar="COUNTS"),
   make_option(c("-o", "--output"), type="character", default="./raw_counts_table",
               help="Specify a output count table file. [default= %default]", metavar="OUTPUT"),
-  make_option(c("-r", "--repeat"), type="character", default="./TERRA_repeat_table",
+  make_option(c("-r", "--telo_repeat"), type="character", default="./TERRA_repeat_table",
               help="Specify a output count table file. [default= %default]", metavar="OUTPUT"),
   make_option(c("-s", "--subtelo"), type="character", default="./TERRA_subtelo_table",
               help="Specify a output count table file. [default= %default]", metavar="OUTPUT"),            
@@ -79,11 +79,11 @@ genes_to_exclude <- c(
 telomeric_repeat_counts <- counts.df %>% filter(grepl("repeat", Gene))
 subtelomeric_TERRA_counts <- counts.df %>% filter((Gene %in% genes_to_exclude) & !grepl("repeat", Gene))
 filtered_counts <- counts.df %>% filter(!(Gene %in% genes_to_exclude))
-remove_index<-grep("__",filtered_counts$Gene)
+remove_index <- grep("__",filtered_counts$Gene)
 select_i <- seq(0,ncol(filtered_counts),by = 2)
 filtered_counts <- filtered_counts[-remove_index,c(1,select_i)]
 
 export(filtered_counts,opt$output,format = opt$format)
-export(counts.df,opt$repeat,format = opt$format)
+export(counts.df,opt$telo_repeat,format = opt$format)
 export(subtelomeric_TERRA_counts,opt$subtelo,format = opt$format)
 

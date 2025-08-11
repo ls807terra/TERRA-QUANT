@@ -8,8 +8,7 @@
 #SBATCH -e YARN_err.txt
 
 # Step1. Summary counts in a table.
-./01_summaryCounts.R -c ../counts/ -o ../meta/raw_counts_table.csv 
-./01_summaryCounts.R -x -c ../TH_counts/ -o ../meta/TERRA_counts_table.csv
+./01_summaryCounts.R -c ../counts/ -o ../meta/raw_counts_table.csv -r ../meta/TERRA_repeat_table.csv -s ../meta/TERRA_subtelo_table.csv
 
 # Step2. Normalize count by YARN
 ./02_YARN_normalize_with_TERRA.R \

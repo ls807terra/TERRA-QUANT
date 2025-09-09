@@ -132,7 +132,7 @@ In the **_Demo/pipeline demo_** folder, ```demo_HGPS_sra_list.txt``` records a s
 ### Start from downloading SRA files
 First, download these data by SRAToolkit ```prefetch``` command or execute the script provided in this repository 
 
-  **_command:_** ```sh a.0_ps_SRA_download.sh Demo/SRA list.txt SRA```
+  **_command:_** ```sh a.0_ps_SRA_download.sh Demo/pipeline demo/demo_HGPS_sra_list.txt SRA```
 
 This will download all SRA listed in the text file to **_SRA_** folder then downloaded SRA files can be fed into the pipeline. 
 

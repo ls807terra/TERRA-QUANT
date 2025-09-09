@@ -127,7 +127,7 @@ Then execute the **"install_R_packages_RNAseq_quantTERRA.R"** by Rscript.
 # Demo and Data reproduction
 Here is a demonstration of using this pipeline, you can start from downloading SRA files from NCBI database or from processing fastq raw files. 
 
-In the **_Demo_** folder, ```demo_HGPS_sra_list.txt``` records a series of SRA accession number that were used in the TERRA quantification of Figure 6E in our paper. The corresponding annotation file, ```HGPS_annotation.xlsx``` , for these sample is also desposited in **_Demo_** folder. This demo describes steps to reproduce the result.
+In the **_Demo/pipeline_demo_** folder, ```demo_HGPS_sra_list.txt``` records a series of SRA accession number that were used in the TERRA quantification of Figure 6E in our paper. The corresponding annotation file, ```HGPS_annotation.xlsx``` , for these sample is also desposited in **_Demo/pipeline_demo_** folder. This demo describes steps to reproduce the result.
 
 ### Start from downloading SRA files
 First, download these data by SRAToolkit ```prefetch``` command or execute the script provided in this repository 

@@ -6,9 +6,6 @@ This repo is a RNA-seq pipeline that can quantify TERRA expression level from di
 ## Description
 This pipeline is a combination of various bioinfomatic tools for performing reads dump, reads QC, alignment, total gene count and TERRA count. This pipeline inputs Sequence Read Archive (SRA) files and generates total gene and TERRA count tables for later expression analysis (For example, plotting heatmaps and boxplots).
 
-## ** NOTICE **
-The scripts provided in this pipeline were designed to be executed on computation nodes provided by National Center for High-performance Computing at Taiwan (NCHC Taiwan) using Slurm Queueing system. *Current version of scripts might not work on personal computer.*
-
 ## TERRA region and CHM13 gene annotation
 The TERRA regions were defined based on RNA-seq reads mapping on CHM13 genome. Detail information is written in: CHM13_v2.0_add_TERRA_ITS_AS_v5.gtf.gz
 
@@ -130,7 +127,7 @@ Then execute the **"install_R_packages_RNAseq_quantTERRA.R"** by Rscript.
 # Demo and Data reproduction
 Here is a demonstration of using this pipeline, you can start from downloading SRA files from NCBI database or from processing fastq raw files. 
 
-In the **_Demo_** folder, ```SRA list.txt``` records a series of SRA accession number that were used in the TERRA quantification of Figure3 in our paper. This demo describes steps to reproduce the result.
+In the **_Demo_** folder, ```demo_HGPS_sra_list.txt``` records a series of SRA accession number that were used in the TERRA quantification of Figure 6E in our paper. The corresponding annotation file, ```HGPS_annotation.xlsx``` , for these sample is also desposited in **_Demo_** folder. This demo describes steps to reproduce the result.
 
 ### Start from downloading SRA files
 First, download these data by SRAToolkit ```prefetch``` command or execute the script provided in this repository 
